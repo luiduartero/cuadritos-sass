@@ -1,0 +1,51 @@
+$altoCuadro: 50px;
+$anchoCuadro:50px; 
+$aColor: blue; 
+$bColor: red; 
+$cColor: green; 
+$dColor: pink; 
+$eColor: purple; 
+$fColor: orange; 
+$gColor: yellow; 
+$colors: $aColor $bColor $cColor $dColor $eColor $fColor $gColor;
+$letra: "a" "b" "c" "d" "e" "f" "g"; 
+
+body {    
+    font-family: arial;    
+}
+h1  {        
+    text-align: center;    
+}
+.contenedorInterior {
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+    text-align: center;
+}
+
+.cuadro     {
+    border: 1px solid black;
+    width: $anchoCuadro;    
+    height: $altoCuadro;
+    overflow: hidden;
+    position: absolute;
+    display: table;
+    }
+.contenedor {
+    position: relative;
+    right: 50%;
+}
+
+@each $color in $colors {
+    $i: index($colors, $color);
+    $val: nth($letra,$i);
+    .#{$val}{
+        background-color: #{$color} ;
+        right: 240px - 40px * $i;
+        top: 270px - 40px * $i;
+        @if ($val == "b" or $val == "f"){
+            z-index: 3;
+        }
+    }
+}
+       
